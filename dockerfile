@@ -1,14 +1,26 @@
 # Usar imagen oficial de Python
 FROM python:3.11-slim
 
+# Establecer variables de entorno
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Instalar dependencias del sistema
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        gcc \
+        libc6-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 # Establecer directorio de trabajo
 WORKDIR /app
 
 # Copiar archivos de dependencias
 COPY requirements.txt .
 
-# Instalar dependencias
-RUN pip install --no-cache-dir -r requirements.txt
+# Actualizar pip e instalar dependencias
+RUN pip install --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
 
 # Copiar código de la aplicación
 COPY app.py .

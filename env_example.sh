@@ -1,9 +1,0 @@
-# Configuración de la Weather API
-# Copia este archivo como .env y completa con tus valores
-
-# API Key de OpenWeatherMap (REQUERIDA)
-# Obtén tu API key gratuita en: https://openweathermap.org/api
-OPENWEATHER_API_KEY=e30c0a67be20e63a6907922657d0c2ff
-
-# Puerto de la aplicación (opcional, default: 8080)
-# PORT=8080
